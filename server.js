@@ -32,6 +32,37 @@ app.get("/all", function(req, res) {
     });
 });
 
+app.get("/scrape", function(req, res) {
+    axios.get("website").then(function(response) {
+        const $ = cheerio.load(response.data);
+        $(".tittle").each(function(i, element) {
+            let title = $(element).children("a").text();
+            let link = $(element).children("a").attr("href");
+
+            if (title && link) {
+                //insert the data in scrapedData db
+                db.scrapedData.insert({
+                    title: title,
+                    link: link
+                },
+                function(err, inserted) {
+                    if (err) {
+                        console.log(err);
+                    }
+                    else {
+                        console.log(inserted);
+                    }
+                });
+            }
+        });
+    });
+    res.send("Done Scrapping");
+});
+
+app.listen(3000, function() {
+    console.log("app running on 3000 port");
+});
+
 // console.log()
 
 //make request with axios from website. html page is passed as callback's third argument 
