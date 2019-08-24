@@ -3,6 +3,24 @@ const cheerio = require("cheerio");
 // makes http request for the html page
 const axios = require("axios");
 
+const express = require("express");
+const mongojs = require("mongojs");
+
+const app = express();
+
+const databaseUrl = "scrapper";
+const collections = ["scrappedData"];
+
+// hook mongojs config to db variable
+const db = mongojs(databaseUrl, collections);
+db.on("error", function(error) {
+    console.log("Database Error:", error);
+});
+
+// app.get("/", function(req, res) {
+//     res.send("message");
+// });
+
 // console.log()
 
 //make request with axios from website. html page is passed as callback's third argument 
