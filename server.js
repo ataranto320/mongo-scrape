@@ -17,6 +17,10 @@ axios.get("webstie").then(function(response) {
         //save text of element in a "title" variable 
         let title = $(element).children().attr("href");
 
+        // find parent/child tag and save href values as "link"
+        // let link = $(element).parent().attr("href");
+        // let link = $(element).children().attr("href");
+
         //save results in object that will be pushed into results array
         results.push({
             title: title,
