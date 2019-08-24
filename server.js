@@ -21,6 +21,17 @@ db.on("error", function(error) {
 //     res.send("message");
 // });
 
+app.get("/all", function(req, res) {
+    db.scrapedData.find({}, function(error, found) {
+        if(error) {
+            console.log(error);
+        }
+        else {
+            res.json(found);
+        }
+    });
+});
+
 // console.log()
 
 //make request with axios from website. html page is passed as callback's third argument 
