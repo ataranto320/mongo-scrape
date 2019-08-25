@@ -15,6 +15,14 @@ const app = express();
 const databaseUrl = "news";
 const collections = ["scrappedData"];
 
+// connect to mongo db
+// mongoose.connect("mongodb://localhost/scehma", {useNewUrlParser: true });
+
+// create an object containing dummy data to save to database
+// let data = {
+//     array: ["headline", "sum", "url"]
+// };
+
 // hook mongojs config to db variable
 const db = mongojs(databaseUrl, collections);
 db.on("error", function(error) {
