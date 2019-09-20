@@ -9,6 +9,10 @@ const articlesSchema = new schema ({
     },
 
     sum: {
+        type: String
+    },
+
+    url: {
         url: String
     }
 });
