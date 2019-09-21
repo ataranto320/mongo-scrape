@@ -2,21 +2,28 @@ const mongoose = require("mongoose");
 
 const schema = mongoose.schema;
 
-const articlesSchema = new schema ({
+const articleSchema = new schema ({
     headline: {
         type: String,
         unique: true
     },
 
     sum: {
-        type: String
+        type: String,
+        required: true
     },
 
     url: {
-        url: String
-    }
+        url: String,
+        required: true
+    },
+
+    notes: [{
+        type: schema.types.id,
+        ref: "Notes"
+    }]
 });
 
 const Articles = module.exports = mongoose.model("Articles", articleSchema);
 
-module. exports = Articles;
+module.exports = Articles;
