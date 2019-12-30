@@ -9,7 +9,7 @@ const axios = require("axios");
 
 const express = require("express");
 const mongojs = require("mongojs");
-// const mongoose = require("mongoose");
+const mongoose = require("mongoose");
 
 const app = express();
 
@@ -17,7 +17,7 @@ const databaseUrl = "news";
 const collections = ["scrappedData"];
 
 // connect to mongo db
-// mongoose.connect("mongodb://localhost/scehma", {useNewUrlParser: true });
+mongoose.connect("mongodb://localhost/scehma", {useNewUrlParser: true });
 
 // create an object containing dummy data to save to database
 // let data = {
